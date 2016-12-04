@@ -1,0 +1,24 @@
+citHeader("To cite the 'SISIR' package in publications, use:")
+
+year = sub('.*(2[[:digit:]]{3})-.*', '\\1', meta$Date, perl = TRUE)
+vers = paste('R package version', meta$Version)
+
+citEntry(
+  entry = 'manual',
+  title = paste('SISIR:', meta$Title),
+  author = as.person(meta$Author),
+  year = year,
+  note = vers,
+  textVersion = paste('Villa-Vialaneix N., Picheny V., Servien R. (', year, ') SISIR: ', meta$Title, '. ', vers, '.', sep = '')
+)
+
+citEntry(
+  entry = 'unpublished',
+  title = 'Interpretable sparse SIR for digitized functional data',
+  author = personList(as.person("Victor Picheny"), as.person("R\'emi Servien"), as.person("Nathalie Villa-Vialaneix")),
+  note = 'Preprint',
+  
+  textVersion = paste('Picheny V., Servien R., Villa-Vialaneix N. (2016)',
+                      'Interpretable sparse SIR for digitized functional data.',
+                      'Preprint.')
+)

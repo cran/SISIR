@@ -1,0 +1,4 @@
+********************************************************************************
+SISIR 0.1
+  The initial version of SISIR package: ridge SIR with CV for hyper-parameters,
+  sparse SIR with interval fusion
