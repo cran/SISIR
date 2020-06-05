@@ -24,14 +24,13 @@
 #' @param ncores number of cores to use if \code{parallel = TRUE}. If left to 
 #' NULL, all available cores minus one are used
 #' 
-#' @author {Victor Picheny, \email{victor.picheny@inra.fr}
-#' 
-#' Remi Servien, \email{remi.servien@inra.fr}
-#' 
-#' Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
+#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' 
 #' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-#' Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+#' Interpretable sparse SIR for digitized functional data. 
+#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 #' 
 #' @seealso \code{\link{ridgeSIR}}, \code{\link{project.sparseRes}}, 
 #' \code{\link{SISIR}}
@@ -187,8 +186,8 @@ sparseSIR <- function(object, inter_len, adaptive = FALSE, sel_prop = 0.05,
 ################################################################################
 #' @title Print sparseRes object
 #' @name sparseRes
-#' @exportClass sparseRes
 #' @export
+#' @aliases summary.sparseRes
 #' @aliases summary.sparseRes
 #' @aliases print.sparseRes
 #' @aliases sparseRes-class
@@ -197,11 +196,9 @@ sparseSIR <- function(object, inter_len, adaptive = FALSE, sel_prop = 0.05,
 #' @param object a \code{sparseRes} object
 #' @param x a \code{sparseRes} object
 #' @param ... not used
-#' @author {Victor Picheny, \email{victor.picheny@inra.fr}
-#' 
-#' Remi Servien, \email{remi.servien@inra.fr}
-#' 
-#' Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
+#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inra.fr}}
 #' @seealso \code{\link{sparseSIR}}
 #' 
 summary.sparseRes <- function(object, ...) {
@@ -236,14 +233,13 @@ print.sparseRes <- function(x, ...) {
 #' @param object an object of class \code{sparseRes} as obtained from the 
 #' function \code{\link{sparseSIR}}
 #' 
-#' @author {Victor Picheny, \email{victor.picheny@inra.fr}
-#' 
-#' Remi Servien, \email{remi.servien@inra.fr}
-#' 
-#' Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
+#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' 
 #' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-#' Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+#' Interpretable sparse SIR for digitized functional data.
+#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 #' 
 #' @seealso \code{\link{sparseSIR}}
 #' 
@@ -304,15 +300,23 @@ project <- function(object) {
 #' not. Logical. Default is FALSE
 #' @param ncores number of cores to use if \code{parallel = TRUE}. If left to 
 #' NULL, all available cores minus one are used
+#'  
+#' @details 
+#' Different quality criteria used to select the best models among a list of 
+#' models with different interval definitions. Quality criteria are: 
+#' log-likelihood (\code{loglik}), cross-validation error as provided by the
+#' function \code{\link[glmnet]{glmnet}}, two versions of the AIC (\code{AIC} 
+#' and \code{AIC2}) and of the BIC (\code{BIC} and \code{BIC2}) in which the 
+#' number of parameters is either the number of non null intervals or the 
+#' number of non null parameters with respect to the original variables
 #' 
-#' @author {Victor Picheny, \email{victor.picheny@inra.fr}
-#' 
-#' Remi Servien, \email{remi.servien@inra.fr}
-#' 
-#' Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
+#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' 
 #' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-#' Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+#' Interpretable sparse SIR for digitized functional data.
+#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 #' 
 #' @seealso \code{\link{ridgeSIR}}, \code{\link{sparseSIR}}
 #' 
@@ -343,14 +347,6 @@ project <- function(object) {
 #'    are considered as strong zeros or strong non zeros}
 #'    \item{\code{rSIR}}{ same as the input \code{object}}
 #'  }
-#'  
-#'  @details Different quality criteria used to select the best models among a
-#'  list of models with different interval definitions. Quality criteria are:
-#'  log-likelihood (\code{loglik}), cross-validation error as provided by the
-#'  function \code{\link[glmnet]{glmnet}}, two versions of the AIC (\code{AIC} 
-#'  and \code{AIC2}) and of the BIC (\code{BIC} and \code{BIC2}) in which the 
-#'  number of parameters is either the number of non null intervals or the 
-#'  number of non null parameters with respect to the original variables
 #'  
 SISIR <- function(object, inter_len = rep(1, nrow(object$EDR)), sel_prop = 0.05,
                   itermax = Inf, minint = 2, parallel = TRUE, ncores = NULL) {
@@ -458,7 +454,6 @@ SISIR <- function(object, inter_len = rep(1, nrow(object$EDR)), sel_prop = 0.05,
 ################################################################################
 #' @title Print SISIRres object
 #' @name SISIRres
-#' @exportClass SISIRres
 #' @export
 #' @aliases summary.SISIRres
 #' @aliases print.SISIRres
@@ -467,11 +462,9 @@ SISIR <- function(object, inter_len = rep(1, nrow(object$EDR)), sel_prop = 0.05,
 #' @param object a \code{SISIRres} object
 #' @param x a \code{SISIRres} object
 #' @param ... not used
-#' @author {Victor Picheny, \email{victor.picheny@inra.fr}
-#' 
-#' Remi Servien, \email{remi.servien@inra.fr}
-#' 
-#' Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
+#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' @seealso \code{\link{SISIR}}
 #' 
 summary.SISIRres <- function(object, ...) {

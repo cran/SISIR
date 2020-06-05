@@ -18,8 +18,7 @@ ridgeSIR(x, y, H, d, mu2 = NULL)
 \item{mu2}{ridge regularization parameter (numeric, positive)}
 }
 \value{
-S3 object of class
-\code{ridgeRes}: a list consisting of
+S3 object of class \code{ridgeRes}: a list consisting of
 \itemize{
    \item{\code{EDR}}{ the estimated EDR space (a p x d matrix)}
    \item{\code{condC}}{ the estimated slice projection on EDR (a d x H 
@@ -60,19 +59,17 @@ res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
 \dontrun{print(res_ridge)}
 
 }
-\author{
-{Victor Picheny, \email{victor.picheny@inra.fr}
-
-Remi Servien, \email{remi.servien@inra.fr}
-
-Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
-}
 \references{
 {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+Interpretable sparse SIR for digitized functional data. 
+\emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 }
 \seealso{
 \code{\link{sparseSIR}}, \code{\link{SISIR}}, 
 \code{\link{tune.ridgeSIR}}
 }
-
+\author{
+{Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+Remi Servien, \email{remi.servien@inrae.fr}\cr
+Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+}

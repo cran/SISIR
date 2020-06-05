@@ -1,4 +1,10 @@
 ********************************************************************************
+SISIR 0.1-1
+  Removed export for S3 classes
+  Modified deprecated emails
+  Updated article reference
+
+********************************************************************************
 SISIR 0.1
   The initial version of SISIR package: ridge SIR with CV for hyper-parameters,
   sparse SIR with interval fusion

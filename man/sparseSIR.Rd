@@ -4,8 +4,14 @@
 \alias{sparseSIR}
 \title{sparse SIR}
 \usage{
-sparseSIR(object, inter_len, adaptive = FALSE, sel_prop = 0.05,
-  parallel = FALSE, ncores = NULL)
+sparseSIR(
+  object,
+  inter_len,
+  adaptive = FALSE,
+  sel_prop = 0.05,
+  parallel = FALSE,
+  ncores = NULL
+)
 }
 \arguments{
 \item{object}{an object of class \code{ridgeRes} as obtained from the 
@@ -81,19 +87,17 @@ res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
 res_sparse <- sparseSIR(res_ridge, rep(10, 20))
 
 }
-\author{
-{Victor Picheny, \email{victor.picheny@inra.fr}
-
-Remi Servien, \email{remi.servien@inra.fr}
-
-Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
-}
 \references{
 {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+Interpretable sparse SIR for digitized functional data. 
+\emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 }
 \seealso{
 \code{\link{ridgeSIR}}, \code{\link{project.sparseRes}}, 
 \code{\link{SISIR}}
 }
-
+\author{
+{Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+Remi Servien, \email{remi.servien@inrae.fr}\cr
+Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+}

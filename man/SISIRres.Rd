@@ -2,8 +2,8 @@
 % Please edit documentation in R/sparseSIR.R
 \name{SISIRres}
 \alias{SISIRres}
-\alias{print.SISIRres}
 \alias{summary.SISIRres}
+\alias{print.SISIRres}
 \title{Print SISIRres object}
 \usage{
 \method{summary}{SISIRres}(object, ...)
@@ -21,14 +21,11 @@
 Print a summary of the result of \code{\link{SISIRres}} (
 \code{SISIRres} object)
 }
-\author{
-{Victor Picheny, \email{victor.picheny@inra.fr}
-
-Remi Servien, \email{remi.servien@inra.fr}
-
-Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
-}
 \seealso{
 \code{\link{SISIR}}
 }
-
+\author{
+{Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+Remi Servien, \email{remi.servien@inrae.fr}\cr
+Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+}

@@ -4,8 +4,15 @@
 \alias{SISIR}
 \title{Interval Sparse SIR}
 \usage{
-SISIR(object, inter_len = rep(1, nrow(object$EDR)), sel_prop = 0.05,
-  itermax = Inf, minint = 2, parallel = TRUE, ncores = NULL)
+SISIR(
+  object,
+  inter_len = rep(1, nrow(object$EDR)),
+  sel_prop = 0.05,
+  itermax = Inf,
+  minint = 2,
+  parallel = TRUE,
+  ncores = NULL
+)
 }
 \arguments{
 \item{object}{an object of class \code{ridgeRes} as obtained from the 
@@ -42,17 +49,18 @@ S3 object of class \code{SISIR}: a list consisting of
    are considered as strong zeros or strong non zeros}
    \item{\code{rSIR}}{ same as the input \code{object}}
  }
- 
- @details Different quality criteria used to select the best models among a
- list of models with different interval definitions. Quality criteria are:
- log-likelihood (\code{loglik}), cross-validation error as provided by the
- function \code{\link[glmnet]{glmnet}}, two versions of the AIC (\code{AIC} 
- and \code{AIC2}) and of the BIC (\code{BIC} and \code{BIC2}) in which the 
- number of parameters is either the number of non null intervals or the 
- number of non null parameters with respect to the original variables
 }
 \description{
 \code{SISIR} performs an automatic search of relevant intervals
+}
+\details{
+Different quality criteria used to select the best models among a list of 
+models with different interval definitions. Quality criteria are: 
+log-likelihood (\code{loglik}), cross-validation error as provided by the
+function \code{\link[glmnet]{glmnet}}, two versions of the AIC (\code{AIC} 
+and \code{AIC2}) and of the BIC (\code{BIC} and \code{BIC2}) in which the 
+number of parameters is either the number of non null intervals or the 
+number of non null parameters with respect to the original variables
 }
 \examples{
 set.seed(1140)
@@ -69,18 +77,16 @@ res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
 \dontrun{res_fused <- SISIR(res_ridge, rep(1, ncol(x)))}
 
 }
-\author{
-{Victor Picheny, \email{victor.picheny@inra.fr}
-
-Remi Servien, \email{remi.servien@inra.fr}
-
-Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
-}
 \references{
 {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+Interpretable sparse SIR for digitized functional data.
+\emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 }
 \seealso{
 \code{\link{ridgeSIR}}, \code{\link{sparseSIR}}
 }
-
+\author{
+{Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+Remi Servien, \email{remi.servien@inrae.fr}\cr
+Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+}

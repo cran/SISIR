@@ -43,18 +43,16 @@ proj_data <- project(res_sparse)
 }
 
 }
-\author{
-{Victor Picheny, \email{victor.picheny@inra.fr}
-
-Remi Servien, \email{remi.servien@inra.fr}
-
-Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
-}
 \references{
 {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+Interpretable sparse SIR for digitized functional data.
+\emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 }
 \seealso{
 \code{\link{sparseSIR}}
 }
-
+\author{
+{Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+Remi Servien, \email{remi.servien@inrae.fr}\cr
+Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+}

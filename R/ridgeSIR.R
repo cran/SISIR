@@ -26,14 +26,13 @@
 #' @param mu2 ridge regularization parameter (numeric, positive)
 #' @param d number of dimensions to be kept
 #' 
-#' @author {Victor Picheny, \email{victor.picheny@inra.fr}
-#' 
-#' Remi Servien, \email{remi.servien@inra.fr}
-#' 
-#' Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
+#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' 
 #' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-#' Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+#' Interpretable sparse SIR for digitized functional data. 
+#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 #' 
 #' @seealso \code{\link{sparseSIR}}, \code{\link{SISIR}}, 
 #' \code{\link{tune.ridgeSIR}}
@@ -49,8 +48,7 @@
 #' res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
 #' \dontrun{print(res_ridge)}
 #' 
-#' @return S3 object of class
-#' \code{ridgeRes}: a list consisting of
+#' @return S3 object of class \code{ridgeRes}: a list consisting of
 #' \itemize{
 #'    \item{\code{EDR}}{ the estimated EDR space (a p x d matrix)}
 #'    \item{\code{condC}}{ the estimated slice projection on EDR (a d x H 
@@ -173,9 +171,8 @@ processSIR <- function(pre, d, mu2) {
 ################################################################################
 #' @title Print ridgeRes object
 #' @name ridgeRes
-#' @exportClass ridgeRes
 #' @export
-#' @aliases summary.ridgeRes
+#' @aliases summary.ridgeRes()
 #' @aliases print.ridgeRes
 #' @aliases ridgeRes-class
 #' @description Print a summary of the result of \code{\link{ridgeSIR}} (
@@ -183,11 +180,9 @@ processSIR <- function(pre, d, mu2) {
 #' @param object a \code{ridgeRes} object
 #' @param x a \code{ridgeRes} object
 #' @param ... not used
-#' @author {Victor Picheny, \email{victor.picheny@inra.fr}
-#' 
-#' Remi Servien, \email{remi.servien@inra.fr}
-#' 
-#' Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
+#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr 
+#' Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' @seealso \code{\link{ridgeSIR}}
 #' 
 summary.ridgeRes <- function(object, ...) {
@@ -210,6 +205,7 @@ print.ridgeRes <- function(x, ...) {
 ################################################################################
 #' @title Cross-Validation for ridge SIR
 #' @export
+#' @aliases tune.ridgeSIR
 #'
 #' @description
 #' \code{tune.ridgeSIR} performs a Cross Validation for ridge SIR estimation
@@ -226,14 +222,13 @@ print.ridgeRes <- function(x, ...) {
 #' @param ncores number of cores to use if \code{parallel = TRUE}. If left to 
 #' NULL, all available cores minus one are used
 #' 
-#' @author {Victor Picheny, \email{victor.picheny@inra.fr}
-#' 
-#' Remi Servien, \email{remi.servien@inra.fr}
-#' 
-#' Nathalie Villa-Vialaneix, \email{nathalie.villa-vialaneix@inra.fr}}
+#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' 
 #' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
-#' Interpretable sparse SIR for digitized functional data. \emph{Preprint}.}
+#' Interpretable sparse SIR for digitized functional data.
+#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 #' 
 #' @seealso \code{\link{ridgeSIR}}
 #' 
@@ -256,6 +251,13 @@ print.ridgeRes <- function(x, ...) {
 #' 
 #' @return a data frame with tested parameters and corresponding CV error and 
 #' estimation of R(d)
+#' 
+tune <- function(x, y, listH, list_mu2, list_d, nfolds, parallel, ncores) {
+  UseMethod("tune")
+}
+
+#' @export
+#' @rdname tune
 tune.ridgeSIR <- function(x, y, listH, list_mu2, list_d, nfolds = 10, 
                           parallel = TRUE, ncores = NULL) {
   if (parallel) {
