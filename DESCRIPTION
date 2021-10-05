@@ -1,8 +1,8 @@
 Package: SISIR
 Type: Package
 Title: Sparse Interval Sliced Inverse Regression
-Version: 0.1-1
-Date: 2020-06-05
+Version: 0.1-2
+Date: 2021-09-21
 Authors@R: c(
   person("Victor", "Picheny", , "victor.picheny@inra.fr", c("aut")),
   person("Remi", "Servien", , "remi.servien@inrae.fr", c("aut")),
@@ -15,11 +15,11 @@ Description: An interval fusion procedure for functional data in the
 Depends: foreach, doParallel
 Imports: Matrix, expm, RSpectra, glmnet
 License: GPL (>= 2)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2020-06-05 07:28:36 UTC; nathalie
+Packaged: 2021-10-05 09:00:34 UTC; nathalie
 Author: Victor Picheny [aut],
   Remi Servien [aut],
   Nathalie Vialaneix [aut, cre]
 Repository: CRAN
-Date/Publication: 2020-06-05 10:00:02 UTC
+Date/Publication: 2021-10-05 09:20:05 UTC

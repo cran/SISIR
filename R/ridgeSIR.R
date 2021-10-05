@@ -204,13 +204,11 @@ print.ridgeRes <- function(x, ...) {
 # Cross validation for ridge SIR
 ################################################################################
 #' @title Cross-Validation for ridge SIR
-#' @export
-#' @aliases tune.ridgeSIR
 #'
 #' @description
 #' \code{tune.ridgeSIR} performs a Cross Validation for ridge SIR estimation
 #'
-#' @param x explatory variables (numeric matrix or data frame)
+#' @param x explanatory variables (numeric matrix or data frame)
 #' @param y target variable (numeric vector)
 #' @param listH list of the number of slices to be tested (numeric vector)
 #' @param list_mu2 list of ridge regularization parameters to be tested 
@@ -252,12 +250,8 @@ print.ridgeRes <- function(x, ...) {
 #' @return a data frame with tested parameters and corresponding CV error and 
 #' estimation of R(d)
 #' 
-tune <- function(x, y, listH, list_mu2, list_d, nfolds, parallel, ncores) {
-  UseMethod("tune")
-}
-
 #' @export
-#' @rdname tune
+#' 
 tune.ridgeSIR <- function(x, y, listH, list_mu2, list_d, nfolds = 10, 
                           parallel = TRUE, ncores = NULL) {
   if (parallel) {
