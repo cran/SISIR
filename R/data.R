@@ -1,0 +1,46 @@
+################################################################################
+# Documentation for the dataset "truffles"
+################################################################################
+
+#' @title Dataset "Truffles"
+#' @name truffles
+#' @aliases rainfall beta
+#' 
+#' @description Yearly truffles production and corresponding monthly rainfall 
+#' information of the Perigord black truffle in the Vaucluse (France) between
+#' 1924 and 1949.
+#' 
+#' @docType data
+#' 
+#' @format 3 datasets are provided: \itemize{
+#'   \item \code{rainfall}: a data frame with 15 columns (months from January 
+#'   Year n to March Year n+1) and 25 rows (production years from 1924/1925 to 
+#'   1948/1949). Data correspond to cumulated rainfall in mm;
+#'   \item \code{truffles}: a vector with 25 values corresponding to the total 
+#'   production (in kg) of truffles in the truffle patch of T. melanosporum de 
+#'   Pernes-Les-Fontaines (Vaucluse, France);
+#'   \item \code{beta}: 0/1 vector with 15 values indicated the months during 
+#'   which the rainfall has the most important influence on the truffle 
+#'   production, as provided by experts.
+#' }
+#' 
+#' @details This dataset has been made available by courtesy of the authors of 
+#' the publication [Baragatti \emph{et al.}, 2019]. Meteorological data have 
+#' been provided by Meteo France https://meteofrance.com (Orange meteorological 
+#' station) and truffle production data are courtesy of the truffle patch.
+#' 
+#' @references
+#' Baragatti M., Grollemund P.M., Montpied P., Dupouey J.L., Gravier J., Murat 
+#' C., Le Tacon F. (2019) Influence of annual climatic variations, climate
+#' changes, and sociological factors on the production of the Perigord black 
+#' truffle (\emph{Tuber melanosporum Vittad.}) from 1903-1904 to 1988-1989 in 
+#' the Vaucluse (France), \emph{Mycorrhiza}, \strong{29}(2), 113-125.
+#' 
+#' @examples 
+#' data(truffles)
+#' \dontrun{
+#' summary(truffles)
+#' plot(1:15, rainfall[1, ], type = "l", xlab = "month", ylab = "rainfall (mm)")
+#' }
+
+NULL
