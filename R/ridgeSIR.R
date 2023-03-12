@@ -30,7 +30,7 @@
 #' Remi Servien, \email{remi.servien@inrae.fr}\cr
 #' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' 
-#' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
+#' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2019) 
 #' Interpretable sparse SIR for digitized functional data. 
 #' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 #' 
@@ -72,6 +72,8 @@
 #'  
 
 ridgeSIR <- function(x, y, H, d, mu2 = NULL) {
+  if (is.data.frame(x)) x <- as.matrix(x)
+  
   oldwarn <- getOption("warn")
   options(warn = -1)
   
@@ -172,7 +174,7 @@ processSIR <- function(pre, d, mu2) {
 #' @title Print ridgeRes object
 #' @name ridgeRes
 #' @export
-#' @aliases summary.ridgeRes()
+#' @aliases summary.ridgeRes
 #' @aliases print.ridgeRes
 #' @aliases ridgeRes-class
 #' @description Print a summary of the result of \code{\link{ridgeSIR}} (

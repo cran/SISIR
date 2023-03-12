@@ -1,11 +1,12 @@
 ################################################################################
 # SFCB
 ################################################################################
-#' @title SFCB
+#' @title sfcb
+#' @name sfcb
 #' @export
 #'
 #' @description
-#' \code{SFCB} performs interval selection based on random forests
+#' \code{sfcb} performs interval selection based on random forests
 #'
 #' @param X input predictors (matrix or data.frame)
 #' @param Y target variable (vector whose length is equal to the number of rows
@@ -53,6 +54,9 @@
 #' 
 #' @author {Remi Servien, \email{remi.servien@inrae.fr}\cr
 #' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+#' 
+#' @references {Servien, R. and Vialaneix, N. (2023) A random forest approach 
+#' for interval selection in functional regression. Preprint.}
 #' 
 #' @examples 
 #' data(truffles)

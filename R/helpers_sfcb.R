@@ -90,7 +90,7 @@ predict_rf <- function(summaries, target, input_groups, selection = "none",
     }
     return(out)
   }, simplify = FALSE)
-  names(orig_importance) <- names(summaries)
+  names(orig_importance) <- summary_names
   
   out <- list("mse" = all_mse, "importances" = orig_importance)
   

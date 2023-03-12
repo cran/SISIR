@@ -60,7 +60,7 @@ res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
 
 }
 \references{
-{Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
+{Picheny, V., Servien, R. and Villa-Vialaneix, N. (2019) 
 Interpretable sparse SIR for digitized functional data. 
 \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 }

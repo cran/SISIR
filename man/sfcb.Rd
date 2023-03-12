@@ -2,7 +2,7 @@
 % Please edit documentation in R/SFCB.R
 \name{sfcb}
 \alias{sfcb}
-\title{SFCB}
+\title{sfcb}
 \usage{
 sfcb(
   X,
@@ -77,7 +77,7 @@ an object of class \code{"SFCB"} with elements:
   \item{call}{function call}
 }
 \description{
-\code{SFCB} performs interval selection based on random forests
+\code{sfcb} performs interval selection based on random forests
 }
 \examples{
 data(truffles)
@@ -86,6 +86,10 @@ out1 <- sfcb(rainfall, truffles, group.method = "adjclust",
 out2 <- sfcb(rainfall, truffles, group.method = "adjclust", 
              summary.method = "basics", selection.method = "none",
              range.at = c(5, 7))
+}
+\references{
+{Servien, R. and Vialaneix, N. (2023) A random forest approach 
+for interval selection in functional regression. Preprint.}
 }
 \author{
 {Remi Servien, \email{remi.servien@inrae.fr}\cr

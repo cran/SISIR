@@ -3,7 +3,6 @@
 \name{ridgeRes}
 \alias{ridgeRes}
 \alias{summary.ridgeRes}
-\alias{summary.ridgeRes()}
 \alias{print.ridgeRes}
 \alias{ridgeRes-class}
 \title{Print ridgeRes object}

@@ -28,7 +28,7 @@
 #' Remi Servien, \email{remi.servien@inrae.fr}\cr
 #' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
 #' 
-#' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
+#' @references {Picheny, V., Servien, R., and Villa-Vialaneix, N. (2019) 
 #' Interpretable sparse SIR for digitized functional data. 
 #' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
 #' 

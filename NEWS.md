@@ -1,5 +1,18 @@
 # `SISIR`
 
+`SISIR` 0.2.1
+===============
+
+### New features
+
+* Added methods (print, plot, ...) for SFCB objects
+* Allows `data.frame` as inputs for `ridgeSIR`
+
+### Misc
+
+* Minor fixes in documentation
+* Fix CITATION file and updated citations
+
 `SISIR` 0.2.0
 ===============
 

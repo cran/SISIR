@@ -107,6 +107,8 @@ group_cclustofvar <- function(dataset) {
   names(groups) <- 1:ncol(dataset)
   groups <- groups[ncol(dataset):1]
   
+  out_clust <- as.hclust(out_clust)
+  
   return(list("groups" = groups, "dendro" = out_clust))
 }
 
