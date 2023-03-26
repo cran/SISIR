@@ -1,5 +1,21 @@
 # `SISIR`
 
+`SISIR` 0.2.2
+===============
+
+### New features
+
+* Plot with computational time
+
+### Bug fixes
+
+* Fixed a bug in importance computation for `"basics"`
+
+### Code improvements
+
+* Added unit tests
+
+
 `SISIR` 0.2.1
 ===============
 

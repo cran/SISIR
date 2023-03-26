@@ -150,6 +150,7 @@ compute_origimportance <- function(ind, importances, input_groups, freq_groups,
                  data.frame("var" = names_sd, "sd" = out_sd),
                  by = "var", all = TRUE)
     rownames(out) <- out$var
+    out <- out[varnames, ]
     out$var <- NULL
     
   }

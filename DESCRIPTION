@@ -1,8 +1,8 @@
 Package: SISIR
 Type: Package
 Title: Select Intervals Suited for Functional Regression
-Version: 0.2.1
-Date: 2023-03-12
+Version: 0.2.2
+Date: 2023-03-15
 Authors@R: c(
   person("Victor", "Picheny", , "victor.picheny@inrae.fr", c("aut")),
   person("Remi", "Servien", , "remi.servien@inrae.fr", c("aut")),
@@ -20,13 +20,14 @@ BugReports: https://forgemia.inra.fr/sfcb/sisir/-/issues
 Imports: Matrix, expm, RSpectra, glmnet, Boruta, CORElearn, dplyr,
         mixOmics, purrr, ranger, tidyr, tidyselect, adjclust, magrittr,
         rlang, ggplot2, aricode, dendextend, reshape2, RColorBrewer
+Suggests: testthat
 License: GPL (>= 2)
 RoxygenNote: 7.1.2
 Encoding: UTF-8
 Repository: CRAN
 NeedsCompilation: no
-Packaged: 2023-03-12 13:26:03 UTC; nathalie
+Packaged: 2023-03-26 16:57:08 UTC; nathalie
 Author: Victor Picheny [aut],
   Remi Servien [aut],
   Nathalie Vialaneix [aut, cre] (<https://orcid.org/0000-0003-1156-0639>)
-Date/Publication: 2023-03-12 13:50:02 UTC
+Date/Publication: 2023-03-26 17:20:18 UTC

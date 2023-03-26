@@ -51,7 +51,9 @@ represent the importance. Default to \code{"boxplot"}}
 
 \item{quality.crit}{character vector (length 1 or 2) indicating one or two
 quality criteria to display. The values have to be taken in \{\code{"mse"},
-\code{"Precision"}, \code{"Recall"}, \code{"ARI"}, \code{"NMI"}\}}
+\code{"time"}, \code{"Precision"}, \code{"Recall"}, \code{"ARI"}, 
+\code{"NMI"}\}. If \code{"time"} is chosen, it can not be associated with any
+other criterion}
 
 \item{at}{numeric vector. Set of the number of intervals to extract for}
 

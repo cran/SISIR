@@ -27,7 +27,9 @@
 #' represent the importance. Default to \code{"boxplot"}
 #' @param quality.crit character vector (length 1 or 2) indicating one or two
 #' quality criteria to display. The values have to be taken in \{\code{"mse"},
-#' \code{"Precision"}, \code{"Recall"}, \code{"ARI"}, \code{"NMI"}\}
+#' \code{"time"}, \code{"Precision"}, \code{"Recall"}, \code{"ARI"}, 
+#' \code{"NMI"}\}. If \code{"time"} is chosen, it can not be associated with any
+#' other criterion
 #' @param ... not used
 #' @param at numeric vector. Set of the number of intervals to extract for 
 #' @param ground_truth numeric vector of ground truth. Target variables 
@@ -201,7 +203,7 @@ quality.SFCB <- function(object, ground_truth, threshold = NULL) {
     stop(paste("'ground_truth' must have a length identical to initial number ",
                "of variables."))
 
-  if (!is.null(threshold) && !is.numeric(threshold) && threshold <= 0) 
+  if (!is.null(threshold) && (!is.numeric(threshold) || threshold <= 0)) 
     stop("'threshold' must be a positive number or NULL.")
   
   if (is.null(threshold) & !("selected" %in% names(object))) 

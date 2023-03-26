@@ -29,7 +29,7 @@ plot_dendrogram <- function(x) {
     dendro %>% rect.dendrogram(k = kmax)
   } else {
     message(paste("Reversals detected in the dendrogram. Rectangles are not",
-                  "relevant and thus, they not displayed."))
+                  "relevant and thus, they are not displayed."))
   }
   
   # horizontal lines ('range_at')
@@ -146,23 +146,27 @@ plot_selection <- function(x, sel.type, threshold) {
   is_selected <- "selected" %in% names(x)
   
   if (threshold != "none") {
-    if (!is.numeric(threshold)) stop("'threshold' must be numeric.")
+    if (!is.numeric(threshold)) 
+      stop("'threshold' must be numeric.", call. = FALSE)
     
     if (is_selected) 
       stop(paste("A selection method has already been used: 'threshold' must",
-                 "be 'none'."))
+                 "be 'none'."),
+           call. = FALSE)
            
     if (sel.type != "selection") {
       warning(paste("A 'threshold' has passed to the plot function while",
                     "'sel.type' is not 'selection'. Automatically switching it",
-                    "to 'selection'."))
+                    "to 'selection'."),
+              call. = FALSE)
       sel.type <- "selection"
     }
   }
   
   if (sel.type == "selection" && !is_selected && threshold == "none")
     stop(paste("Variable selection was not used on this result. Choose",
-               "sel.type = 'importance'"))
+               "sel.type = 'importance'"),
+         call. = FALSE)
   
   lobj <- length(x$importances)
   nrepeats <- nrow(x$mse) / lobj
@@ -319,17 +323,42 @@ plot_selection <- function(x, sel.type, threshold) {
 
 plot_quality <- function(x, quality.crit) {
   
+  valid_criteria <- "mse"
+  if ("computational.times" %in% names(x))  {
+    valid_criteria <- c(valid_criteria, "time")
+  }
   if ("quality" %in% names(x)) {
-    valid_criteria <- c("mse", "Precision", "Recall", "ARI", "NMI")
-  } else valid_criteria <- "mse"
+    valid_criteria <- c(valid_criteria, "Precision", "Recall", "ARI", "NMI")
+  }
   
   crit_ok <- all(sapply(quality.crit, function(cc) cc %in% valid_criteria))
   if (!crit_ok || length(quality.crit) > 2) {
     stop(paste0("'quality.crit' must be a vector with length at most 2 in ",
-                paste(valid_criteria, collapse = ", "), "."))
+                paste(valid_criteria, collapse = ", "), "."),
+         call. = FALSE)
+  }
+  
+  if (length(quality.crit) == 2 && "time" %in% quality.crit) {
+    stop("'time' is a valid quality criterion to plot only taken alone.",
+         call. = FALSE)
+  }
+  
+  if ("time" %in% quality.crit) {
+    df <- data.frame("criterion" = c(unname(x$"computational.times")),
+                     "step" = names(x$"computational.times"))
+    df$step <- factor(df$step, levels = names(x$"computational.times"),
+                      ordered = TRUE)
+    p <- ggplot(df, aes(fill = .data$step, y = .data$criterion, x = 1)) + 
+      geom_bar(stat = "identity") + theme_bw() + xlim(0, 2) +
+      ylab("computational time (s)") +
+      theme(axis.title.x = element_blank(), axis.ticks.x = element_blank(),
+            axis.text.x = element_blank()) +
+      scale_fill_brewer(type = "qual", palette = 7)
+    return(p)
   }
   
   if (length(quality.crit) == 1) {
+    # build data frame
     if (quality.crit == "mse") {
       df <- data.frame("criterion" = x$mse$mse, "at" = x$mse$clust)
       ylimits <- c(0, max(df$criterion))
@@ -340,11 +369,14 @@ plot_quality <- function(x, quality.crit) {
         ylimits <- c(-1, 1)
       } else ylimits <- c(0, 1)
     }
+    
+    # make plot
     p <- ggplot(df, aes(x = .data$at, y = .data$criterion)) + 
       geom_jitter(width=0.2, height = 0) + theme_bw() + 
       xlab("number of intervals") + ylab(quality.crit) + ylim(ylimits) +
       scale_x_continuous(breaks = unique(df$at), 
                          limits = c(min(df$at) - 0.5, max(df$at + 0.5)))
+    
   } else {
     if ("mse" %in% quality.crit) {
       quality.crit <- setdiff(quality.crit, "mse")
