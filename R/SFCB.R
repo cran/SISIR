@@ -52,11 +52,12 @@
 #'   steps. Only if \code{keep.time == TRUE}}
 #'   \item{call}{function call}
 #' 
-#' @author {Remi Servien, \email{remi.servien@inrae.fr}\cr
-#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+#' @author Remi Servien, \email{remi.servien@inrae.fr}\cr
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}
 #' 
-#' @references {Servien, R. and Vialaneix, N. (2023) A random forest approach 
-#' for interval selection in functional regression. Preprint.}
+#' @references Servien, R. and Vialaneix, N. (2024) A random forest approach 
+#' for interval selection in functional regression. \emph{Statistical Analysis
+#' and Data Mining}, \strong{17}(4), e11705. \doi{10.1002/sam.11705}
 #' 
 #' @examples 
 #' data(truffles)

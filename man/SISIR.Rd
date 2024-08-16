@@ -37,7 +37,7 @@ NULL, all available cores minus one are used}
 }
 \value{
 S3 object of class \code{SISIR}: a list consisting of
-\itemize{
+\describe{
    \item{\code{sEDR}}{ the estimated EDR spaces (a list of p x d matrices)}
    \item{\code{alpha}}{ the estimated shrinkage coefficients (a list of 
    vectors)}
@@ -74,19 +74,20 @@ beta[((tsteps < 0.6) | (tsteps > 0.75)), 2] <- 0
 y <- log(abs(x \%*\% beta[ ,1]) + 1) + sqrt(abs(x \%*\% beta[ ,2]))
 y <- y + rnorm(nsim, sd = 0.1)
 res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
-\dontrun{res_fused <- SISIR(res_ridge, rep(1, ncol(x)))}
+\donttest{res_fused <- SISIR(res_ridge, rep(1, ncol(x)), ncores = 2)
+res_fused}
 
 }
 \references{
-{Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
+Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
 Interpretable sparse SIR for digitized functional data.
-\emph{Statistics and Computing}, \strong{29}(2), 255--267.}
+\emph{Statistics and Computing}, \strong{29}(2), 255--267.
 }
 \seealso{
 \code{\link{ridgeSIR}}, \code{\link{sparseSIR}}
 }
 \author{
-{Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+Victor Picheny, \email{victor.picheny@inrae.fr}\cr
 Remi Servien, \email{remi.servien@inrae.fr}\cr
-Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}
 }

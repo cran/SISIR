@@ -50,29 +50,31 @@
 #' res_sparse <- sparseSIR(res_ridge, rep(10, 20))
 #' 
 #' @return S3 object of class \code{sparseRes}: a list consisting of
-#' \itemize{
+#' \describe{
 #'    \item{\code{sEDR}}{ the estimated EDR space (a p x d matrix)}
 #'    \item{\code{alpha}}{ the estimated shrinkage coefficients (a vector having
 #'    a length similar to \code{inter_len})}
 #'    \item{\code{quality}}{ a vector with various qualities for the model (see
 #'    Details)}
 #'    \item{\code{adapt_res}}{ if \code{adaptive = TRUE}, a list of two vectors: 
-#'    \itemize{
+#'    \describe{
 #'      \item{\code{nonzeros}}{ indexes of variables that are strong non zeros}
 #'      \item{\code{zeros}}{ indexes of variables that are strong zeros}
 #'    }}
 #'    \item{\code{parameters}}{ a list of hyper-parameters for the method: 
-#'    \itemize{
+#'    \describe{
 #'      \item{\code{inter_len}}{ lengths of intervals}
 #'      \item{\code{sel_prop}}{ if \code{adaptive = TRUE}, fraction of the 
 #'      coefficients which are considered as strong zeros or strong non zeros}
 #'    }}
 #'    \item{\code{rSIR}}{ same as the input \code{object}}
 #'    \item{\code{fit}}{ a list for LASSO fit with:
-#'    \itemize{
-#'      \item{\code{glmnet}} result of the \code{\link[glmnet]{glmnet}} function
-#'      \item{\code{lambda}} value of the best Lasso parameter by CV
-#'      \item{\code{x}} exploratory variable values as passed to fit the model
+#'    \describe{
+#'      \item{\code{glmnet}}{ result of the \code{\link[glmnet]{glmnet}} 
+#'      function}
+#'      \item{\code{lambda}}{ value of the best Lasso parameter by CV}
+#'      \item{\code{x}}{ exploratory variable values as passed to fit the 
+#'      model}
 #'    }}
 #'  }
 #'  
@@ -88,6 +90,7 @@ sparseSIR <- function(object, inter_len, adaptive = FALSE, sel_prop = 0.05,
                       parallel = FALSE, ncores = NULL) {
   if (parallel) {
     if (is.null(ncores)) ncores <- min(detectCores() - 1)
+    print(ncores)
     registerDoParallel(cores = ncores)
   }
   oldwarn <- getOption("warn")
@@ -257,7 +260,7 @@ print.sparseRes <- function(x, ...) {
 #' beta[((tsteps < 0.6) | (tsteps > 0.75)), 2] <- 0
 #' y <- log(abs(x %*% beta[ ,1]) + 1) + sqrt(abs(x %*% beta[ ,2]))
 #' y <- y + rnorm(nsim, sd = 0.1)
-#' \dontrun{
+#' \donttest{
 #' res_ridge <- ridgeSIR(x, y, H = 10, d = 2)
 #' res_sparse <- sparseSIR(res_ridge, rep(1, ncol(x)))
 #' proj_data <- project(res_sparse)
@@ -310,13 +313,13 @@ project <- function(object) {
 #' number of parameters is either the number of non null intervals or the 
 #' number of non null parameters with respect to the original variables
 #' 
-#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' @author Victor Picheny, \email{victor.picheny@inrae.fr}\cr
 #' Remi Servien, \email{remi.servien@inrae.fr}\cr
-#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}
 #' 
-#' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
+#' @references Picheny, V., Servien, R. and Villa-Vialaneix, N. (2016) 
 #' Interpretable sparse SIR for digitized functional data.
-#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
+#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.
 #' 
 #' @seealso \code{\link{ridgeSIR}}, \code{\link{sparseSIR}}
 #' 
@@ -332,10 +335,11 @@ project <- function(object) {
 #' y <- log(abs(x %*% beta[ ,1]) + 1) + sqrt(abs(x %*% beta[ ,2]))
 #' y <- y + rnorm(nsim, sd = 0.1)
 #' res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
-#' \dontrun{res_fused <- SISIR(res_ridge, rep(1, ncol(x)))}
+#' \donttest{res_fused <- SISIR(res_ridge, rep(1, ncol(x)), ncores = 2)
+#' res_fused}
 #' 
 #' @return S3 object of class \code{SISIR}: a list consisting of
-#' \itemize{
+#' \describe{
 #'    \item{\code{sEDR}}{ the estimated EDR spaces (a list of p x d matrices)}
 #'    \item{\code{alpha}}{ the estimated shrinkage coefficients (a list of 
 #'    vectors)}

@@ -1,8 +1,8 @@
 Package: SISIR
 Type: Package
 Title: Select Intervals Suited for Functional Regression
-Version: 0.2.2
-Date: 2023-03-15
+Version: 0.2.3
+Date: 2024-08-16
 Authors@R: c(
   person("Victor", "Picheny", , "victor.picheny@inrae.fr", c("aut")),
   person("Remi", "Servien", , "remi.servien@inrae.fr", c("aut")),
@@ -13,7 +13,8 @@ Description: Interval fusion and selection procedures for regression with
              functional inputs. Methods include a semiparametric approach based
              on Sliced Inverse Regression (SIR), as described in 
              <doi:10.1007/s11222-018-9806-6> (standard ridge and sparse SIR are 
-             also included in the package) and a random forest based approach.
+             also included in the package) and a random forest based approach, 
+             as described in <doi:10.1002/sam.11705>.
 Depends: R (>= 3.5.0), foreach, doParallel, graphics, stats
 URL: https://forgemia.inra.fr/sfcb/sisir
 BugReports: https://forgemia.inra.fr/sfcb/sisir/-/issues
@@ -22,12 +23,12 @@ Imports: Matrix, expm, RSpectra, glmnet, Boruta, CORElearn, dplyr,
         rlang, ggplot2, aricode, dendextend, reshape2, RColorBrewer
 Suggests: testthat
 License: GPL (>= 2)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1
 Encoding: UTF-8
 Repository: CRAN
 NeedsCompilation: no
-Packaged: 2023-03-26 16:57:08 UTC; nathalie
+Packaged: 2024-08-16 11:51:16 UTC; nathalie
 Author: Victor Picheny [aut],
   Remi Servien [aut],
   Nathalie Vialaneix [aut, cre] (<https://orcid.org/0000-0003-1156-0639>)
-Date/Publication: 2023-03-26 17:20:18 UTC
+Date/Publication: 2024-08-16 12:50:02 UTC

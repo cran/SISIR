@@ -36,7 +36,7 @@ beta[((tsteps < 0.2) | (tsteps > 0.5)), 1] <- 0
 beta[((tsteps < 0.6) | (tsteps > 0.75)), 2] <- 0
 y <- log(abs(x \%*\% beta[ ,1]) + 1) + sqrt(abs(x \%*\% beta[ ,2]))
 y <- y + rnorm(nsim, sd = 0.1)
-\dontrun{
+\donttest{
 res_ridge <- ridgeSIR(x, y, H = 10, d = 2)
 res_sparse <- sparseSIR(res_ridge, rep(1, ncol(x)))
 proj_data <- project(res_sparse)

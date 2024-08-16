@@ -19,20 +19,20 @@ ridgeSIR(x, y, H, d, mu2 = NULL)
 }
 \value{
 S3 object of class \code{ridgeRes}: a list consisting of
-\itemize{
+\describe{
    \item{\code{EDR}}{ the estimated EDR space (a p x d matrix)}
    \item{\code{condC}}{ the estimated slice projection on EDR (a d x H 
    matrix)}
    \item{\code{eigenvalues}}{ the eigenvalues obtained during the generalized 
    eigendecomposition performed by SIR}
    \item{\code{parameters}}{ a list of hyper-parameters for the method: 
-   \itemize{
+   \describe{
      \item{\code{H}}{ number of slices}
      \item{\code{d}}{ dimension of the EDR space}
      \item{\code{mu2}}{ regularization parameter for the ridge penalty}
    }}
    \item{\code{utils}}{ useful outputs for further computations:
-   \itemize{
+   \describe{
      \item{\code{Sigma}}{ covariance matrix for x}
      \item{\code{slices}}{ slice number for all observations}
      \item{\code{invsqrtS}}{ value of the inverse square root of the 
@@ -56,20 +56,20 @@ beta <- cbind(sin(tsteps*3*pi/2), sin(tsteps*5*pi/2))
 y <- log(abs(x \%*\% beta[ ,1])) + sqrt(abs(x \%*\% beta[ ,2]))
 y <- y + rnorm(50, sd = 0.1)
 res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
-\dontrun{print(res_ridge)}
+res_ridge
 
 }
 \references{
-{Picheny, V., Servien, R. and Villa-Vialaneix, N. (2019) 
+Picheny, V., Servien, R. and Villa-Vialaneix, N. (2019) 
 Interpretable sparse SIR for digitized functional data. 
-\emph{Statistics and Computing}, \strong{29}(2), 255--267.}
+\emph{Statistics and Computing}, \strong{29}(2), 255--267.
 }
 \seealso{
 \code{\link{sparseSIR}}, \code{\link{SISIR}}, 
 \code{\link{tune.ridgeSIR}}
 }
 \author{
-{Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+Victor Picheny, \email{victor.picheny@inrae.fr}\cr
 Remi Servien, \email{remi.servien@inrae.fr}\cr
-Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}
 }

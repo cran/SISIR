@@ -26,13 +26,13 @@
 #' @param mu2 ridge regularization parameter (numeric, positive)
 #' @param d number of dimensions to be kept
 #' 
-#' @author {Victor Picheny, \email{victor.picheny@inrae.fr}\cr
+#' @author Victor Picheny, \email{victor.picheny@inrae.fr}\cr
 #' Remi Servien, \email{remi.servien@inrae.fr}\cr
-#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+#' Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}
 #' 
-#' @references {Picheny, V., Servien, R. and Villa-Vialaneix, N. (2019) 
+#' @references Picheny, V., Servien, R. and Villa-Vialaneix, N. (2019) 
 #' Interpretable sparse SIR for digitized functional data. 
-#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.}
+#' \emph{Statistics and Computing}, \strong{29}(2), 255--267.
 #' 
 #' @seealso \code{\link{sparseSIR}}, \code{\link{SISIR}}, 
 #' \code{\link{tune.ridgeSIR}}
@@ -46,23 +46,23 @@
 #' y <- log(abs(x %*% beta[ ,1])) + sqrt(abs(x %*% beta[ ,2]))
 #' y <- y + rnorm(50, sd = 0.1)
 #' res_ridge <- ridgeSIR(x, y, H = 10, d = 2, mu2 = 10^8)
-#' \dontrun{print(res_ridge)}
+#' res_ridge
 #' 
 #' @return S3 object of class \code{ridgeRes}: a list consisting of
-#' \itemize{
+#' \describe{
 #'    \item{\code{EDR}}{ the estimated EDR space (a p x d matrix)}
 #'    \item{\code{condC}}{ the estimated slice projection on EDR (a d x H 
 #'    matrix)}
 #'    \item{\code{eigenvalues}}{ the eigenvalues obtained during the generalized 
 #'    eigendecomposition performed by SIR}
 #'    \item{\code{parameters}}{ a list of hyper-parameters for the method: 
-#'    \itemize{
+#'    \describe{
 #'      \item{\code{H}}{ number of slices}
 #'      \item{\code{d}}{ dimension of the EDR space}
 #'      \item{\code{mu2}}{ regularization parameter for the ridge penalty}
 #'    }}
 #'    \item{\code{utils}}{ useful outputs for further computations:
-#'    \itemize{
+#'    \describe{
 #'      \item{\code{Sigma}}{ covariance matrix for x}
 #'      \item{\code{slices}}{ slice number for all observations}
 #'      \item{\code{invsqrtS}}{ value of the inverse square root of the 
@@ -245,9 +245,9 @@ print.ridgeRes <- function(x, ...) {
 #' listH <- c(5, 10)
 #' list_d <- 1:4
 #' set.seed(1129)
-#' \dontrun{
-#' res_tune <- tune.ridgeSIR(x, y, listH, list_mu2, list_d, 
-#'                           nfolds = 10, parallel = TRUE)}
+#' \donttest{
+#' res_tune <- tune.ridgeSIR(x, y, listH, list_mu2, list_d, nfolds = 10, 
+#'                           parallel = TRUE, ncores = 2)}
 #' 
 #' @return a data frame with tested parameters and corresponding CV error and 
 #' estimation of R(d)
@@ -285,7 +285,7 @@ tune.ridgeSIR <- function(x, y, listH, list_mu2, list_d, nfolds = 10,
       mu2 <- list_mu2[ind_mu2]
       res_SIR <- processSIR(pre, max_d, mu2)
       global_projector[[ind_mu2]] <- sapply(list_d, function(d) {
-        projectorEDR(res_SIR$EDR[ ,1:d,drop = FALSE], pre$ccov_x, mu2)
+        projectorEDR(res_SIR$EDR[ , 1:d, drop = FALSE], pre$ccov_x, mu2)
       }, simplify = FALSE)
     }
     

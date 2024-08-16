@@ -90,11 +90,9 @@ out1 <- sfcb(rainfall, truffles, group.method = "adjclust",
              summary.method = "pls", selection.method = "relief")
 summary(out1)
 
-\dontrun{
 plot(out1)
 plot(out1, plot.type = "selection")
 plot(out1, plot.type = "importance")
-}
 
 out2 <- sfcb(rainfall, truffles, group.method = "adjclust", 
              summary.method = "basics", selection.method = "none",

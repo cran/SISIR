@@ -38,9 +38,7 @@
 #' 
 #' @examples 
 #' data(truffles)
-#' \dontrun{
 #' summary(truffles)
 #' plot(1:15, rainfall[1, ], type = "l", xlab = "month", ylab = "rainfall (mm)")
-#' }
 
 NULL

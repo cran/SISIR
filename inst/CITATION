@@ -12,10 +12,13 @@ bibentry(
 )
 
 bibentry(
-  bibtype = "Unpublished",
-  textVersion = "Servien R., Vialaneix N. (2023) A random forest approach for interval selection in functional regression. Preprint",
+  bibtype = "Article",
+  textVersion = "Servien R., Vialaneix N. (2024) A random forest approach for interval selection in functional regression. Preprint",
   author = "Rémi Servien, Nathalie Vialaneix",
   title = "A random forest approach for interval selection in functional regression",
-  note = "Preprint",
-  year = "2023"
+  journal = "Statistical Analysis and Data Mining",
+  year = "2024",
+  volume = "17",
+  issue = "4",
+  pages = "e11705"
 )

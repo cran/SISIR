@@ -88,10 +88,11 @@ out2 <- sfcb(rainfall, truffles, group.method = "adjclust",
              range.at = c(5, 7))
 }
 \references{
-{Servien, R. and Vialaneix, N. (2023) A random forest approach 
-for interval selection in functional regression. Preprint.}
+Servien, R. and Vialaneix, N. (2024) A random forest approach 
+for interval selection in functional regression. \emph{Statistical Analysis
+and Data Mining}, \strong{17}(4), e11705. \doi{10.1002/sam.11705}
 }
 \author{
-{Remi Servien, \email{remi.servien@inrae.fr}\cr
-Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}}
+Remi Servien, \email{remi.servien@inrae.fr}\cr
+Nathalie Vialaneix, \email{nathalie.vialaneix@inrae.fr}
 }

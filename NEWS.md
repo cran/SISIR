@@ -1,5 +1,15 @@
 # `SISIR`
 
+`SISIR` 0.2.3
+===============
+
+### Misc
+
+* fixed CRAN NOTE on documentation (describe instead of itemize)
+
+* removed all dontrun from examples (replaced by donttest when relevant)
+
+
 `SISIR` 0.2.2
 ===============
 

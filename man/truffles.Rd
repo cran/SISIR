@@ -32,10 +32,8 @@ station) and truffle production data are courtesy of the truffle patch.
 }
 \examples{
 data(truffles)
-\dontrun{
 summary(truffles)
 plot(1:15, rainfall[1, ], type = "l", xlab = "month", ylab = "rainfall (mm)")
-}
 }
 \references{
 Baragatti M., Grollemund P.M., Montpied P., Dupouey J.L., Gravier J., Murat 

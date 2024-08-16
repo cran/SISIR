@@ -34,29 +34,31 @@ NULL, all available cores minus one are used}
 }
 \value{
 S3 object of class \code{sparseRes}: a list consisting of
-\itemize{
+\describe{
    \item{\code{sEDR}}{ the estimated EDR space (a p x d matrix)}
    \item{\code{alpha}}{ the estimated shrinkage coefficients (a vector having
    a length similar to \code{inter_len})}
    \item{\code{quality}}{ a vector with various qualities for the model (see
    Details)}
    \item{\code{adapt_res}}{ if \code{adaptive = TRUE}, a list of two vectors: 
-   \itemize{
+   \describe{
      \item{\code{nonzeros}}{ indexes of variables that are strong non zeros}
      \item{\code{zeros}}{ indexes of variables that are strong zeros}
    }}
    \item{\code{parameters}}{ a list of hyper-parameters for the method: 
-   \itemize{
+   \describe{
      \item{\code{inter_len}}{ lengths of intervals}
      \item{\code{sel_prop}}{ if \code{adaptive = TRUE}, fraction of the 
      coefficients which are considered as strong zeros or strong non zeros}
    }}
    \item{\code{rSIR}}{ same as the input \code{object}}
    \item{\code{fit}}{ a list for LASSO fit with:
-   \itemize{
-     \item{\code{glmnet}} result of the \code{\link[glmnet]{glmnet}} function
-     \item{\code{lambda}} value of the best Lasso parameter by CV
-     \item{\code{x}} exploratory variable values as passed to fit the model
+   \describe{
+     \item{\code{glmnet}}{ result of the \code{\link[glmnet]{glmnet}} 
+     function}
+     \item{\code{lambda}}{ value of the best Lasso parameter by CV}
+     \item{\code{x}}{ exploratory variable values as passed to fit the 
+     model}
    }}
  }
  

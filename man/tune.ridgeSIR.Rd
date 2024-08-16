@@ -55,9 +55,9 @@ list_mu2 <- 10^(0:10)
 listH <- c(5, 10)
 list_d <- 1:4
 set.seed(1129)
-\dontrun{
-res_tune <- tune.ridgeSIR(x, y, listH, list_mu2, list_d, 
-                          nfolds = 10, parallel = TRUE)}
+\donttest{
+res_tune <- tune.ridgeSIR(x, y, listH, list_mu2, list_d, nfolds = 10, 
+                          parallel = TRUE, ncores = 2)}
 
 }
 \references{
