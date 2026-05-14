@@ -1,5 +1,5 @@
-#' @importFrom Boruta Boruta
 #' @importFrom CORElearn attrEval
+#' @importFrom utils packageVersion
 
 selection_boruta <- function(summaries, Y, seed) {
   # Description #####
@@ -18,7 +18,11 @@ selection_boruta <- function(summaries, Y, seed) {
     curX <- curX[, has_nona, drop = FALSE]
     cur_df <- data.frame(curX, "Y" = Y)
     if (!is.null(seed)) set.seed(seed)
-    boruta_decision <- Boruta::Boruta(Y ~ ., data = cur_df, num.threads = 1)
+    if (packageVersion("Boruta") >= "10.0.0") {
+      boruta_decision <- Boruta::Boruta(Y ~ ., data = cur_df, threads = 1)
+    } else {
+      boruta_decision <- Boruta::Boruta(Y ~ ., data = cur_df, num.threads = 1)
+    }
     boruta_decision <- boruta_decision$finalDecision
     out <- which(boruta_decision %in% c("Tentative", "Confirmed"))
     out <- all_indices[has_nona][out]

@@ -1,5 +1,19 @@
 # `SISIR`
 
+`SISIR` 0.2.4
+===============
+
+### CRAN fixes
+
+* moved Boruta from Import to Suggest
+
+* handled the case where Boruta version is more than 10.0.0
+
+### Misc
+
+* updated citations
+
+
 `SISIR` 0.2.3
 ===============
 

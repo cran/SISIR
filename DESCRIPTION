@@ -1,11 +1,13 @@
 Package: SISIR
 Type: Package
 Title: Select Intervals Suited for Functional Regression
-Version: 0.2.3
-Date: 2024-08-16
+Version: 0.2.4
+Date: 2026-05-14
 Authors@R: c(
-  person("Victor", "Picheny", , "victor.picheny@inrae.fr", c("aut")),
-  person("Remi", "Servien", , "remi.servien@inrae.fr", c("aut")),
+  person("Victor", "Picheny", , "victor.picheny@inrae.fr", c("aut"), 
+    comment = c(ORCID = "0000-0002-4948-5542")),
+  person("Remi", "Servien", , "remi.servien@inrae.fr", c("aut"), 
+    comment = c(ORCID = "0000-0003-1270-1843")),
   person("Nathalie", "Vialaneix", , "nathalie.vialaneix@inrae.fr", 
          c("aut", "cre"), comment = c(ORCID = "0000-0003-1156-0639")))
 Maintainer: Nathalie Vialaneix <nathalie.vialaneix@inrae.fr>
@@ -16,19 +18,21 @@ Description: Interval fusion and selection procedures for regression with
              also included in the package) and a random forest based approach, 
              as described in <doi:10.1002/sam.11705>.
 Depends: R (>= 3.5.0), foreach, doParallel, graphics, stats
-URL: https://forgemia.inra.fr/sfcb/sisir
-BugReports: https://forgemia.inra.fr/sfcb/sisir/-/issues
-Imports: Matrix, expm, RSpectra, glmnet, Boruta, CORElearn, dplyr,
-        mixOmics, purrr, ranger, tidyr, tidyselect, adjclust, magrittr,
-        rlang, ggplot2, aricode, dendextend, reshape2, RColorBrewer
-Suggests: testthat
+URL: https://sfcb.pages-forge.inrae.fr/sisir,
+        https://forge.inrae.fr/sfcb/sisir
+BugReports: https://forge.inrae.fr/sfcb/sisir/-/issues
+Imports: Matrix, expm, RSpectra, glmnet, CORElearn, dplyr, mixOmics,
+        purrr, ranger, tidyr, tidyselect, adjclust, magrittr, rlang,
+        ggplot2, aricode, dendextend, reshape2, RColorBrewer, utils
+Suggests: testthat, Boruta
 License: GPL (>= 2)
-RoxygenNote: 7.3.1
 Encoding: UTF-8
 Repository: CRAN
+Config/roxygen2/version: 8.0.0
 NeedsCompilation: no
-Packaged: 2024-08-16 11:51:16 UTC; nathalie
-Author: Victor Picheny [aut],
-  Remi Servien [aut],
-  Nathalie Vialaneix [aut, cre] (<https://orcid.org/0000-0003-1156-0639>)
-Date/Publication: 2024-08-16 12:50:02 UTC
+Packaged: 2026-05-14 15:41:37 UTC; nathalie
+Author: Victor Picheny [aut] (ORCID: <https://orcid.org/0000-0002-4948-5542>),
+  Remi Servien [aut] (ORCID: <https://orcid.org/0000-0003-1270-1843>),
+  Nathalie Vialaneix [aut, cre] (ORCID:
+    <https://orcid.org/0000-0003-1156-0639>)
+Date/Publication: 2026-05-14 17:10:02 UTC

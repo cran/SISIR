@@ -106,6 +106,13 @@ sfcb <- function(X, Y, group.method = c("adjclust", "cclustofvar"),
   ## checking 'seed'
   if (!is.null(seed) && !is.numeric(seed)) stop("'seed' must be numeric!")
   
+  ## checking Boruta availability
+  if (selection.method == "boruta" && 
+      !requireNamespace("Boruta", quietly = TRUE)) {
+        stop("Package 'Boruta' needed for selection method 'boruta'.",
+             call. = FALSE)
+  }
+  
   sfcb_call <- match.call()
   
   # Step1: group computation ####
