@@ -1,5 +1,15 @@
 # `SISIR`
 
+`SISIR` 0.2.5
+===============
+
+### CRAN fixes
+
+* moved CORElearn from Import to Suggest
+
+* moved Boruta from Suggest to Import (stabilized on CRAN)
+
+
 `SISIR` 0.2.4
 ===============
 

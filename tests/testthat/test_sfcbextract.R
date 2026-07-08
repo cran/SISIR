@@ -33,24 +33,26 @@ test_that("extract works as expected without selection.", {
 })
 
 test_that("extract works as expected with selection.", {
-  expected_outputs <- c("dendro", "groups", "summaries", "selected", "mse", 
-                        "importances", "call")
-  
-  out4 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "pls", selection.method = "relief", 
-               range.at = c(5, 7))
-  out4b <- extract_at(out4, 6)
-  expect_named(out4b, expected_outputs)
-  
-  out5 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "pls", selection.method = "relief", 
-               range.at = c(5, 12))
-  out5b <- extract_at(out5, c(9, 11:12))
-  expect_named(out5b, expected_outputs)
-  expect_length(out5b$groups, 3)
-  expect_length(out5b$summaries, 3)
-  expect_length(out5b$importances, 3)
-  expect_equal(nrow(out5b$mse), 5 * 3)
+  if (requireNamespace("CORElearn", quietly = TRUE)) {
+    expected_outputs <- c("dendro", "groups", "summaries", "selected", "mse", 
+                          "importances", "call")
+    
+    out4 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "pls", selection.method = "relief", 
+                 range.at = c(5, 7))
+    out4b <- extract_at(out4, 6)
+    expect_named(out4b, expected_outputs)
+    
+    out5 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "pls", selection.method = "relief", 
+                 range.at = c(5, 12))
+    out5b <- extract_at(out5, c(9, 11:12))
+    expect_named(out5b, expected_outputs)
+    expect_length(out5b$groups, 3)
+    expect_length(out5b$summaries, 3)
+    expect_length(out5b$importances, 3)
+    expect_equal(nrow(out5b$mse), 5 * 3)
+  }
 })
 
 test_that("extract returns errors as expected.", {

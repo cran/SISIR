@@ -61,8 +61,10 @@
 #' 
 #' @examples 
 #' data(truffles)
-#' out1 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-#'              summary.method = "pls", selection.method = "relief")
+#' if (requireNamespace("CORElearn", quietly = TRUE)) {
+#'   out1 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+#'                summary.method = "pls", selection.method = "relief")
+#' }
 #' out2 <- sfcb(rainfall, truffles, group.method = "adjclust", 
 #'              summary.method = "basics", selection.method = "none",
 #'              range.at = c(5, 7))
@@ -106,11 +108,11 @@ sfcb <- function(X, Y, group.method = c("adjclust", "cclustofvar"),
   ## checking 'seed'
   if (!is.null(seed) && !is.numeric(seed)) stop("'seed' must be numeric!")
   
-  ## checking Boruta availability
-  if (selection.method == "boruta" && 
-      !requireNamespace("Boruta", quietly = TRUE)) {
-        stop("Package 'Boruta' needed for selection method 'boruta'.",
-             call. = FALSE)
+  ## checking CORElearn availability
+  if (selection.method == "relief" && 
+      !requireNamespace("CORElearn", quietly = TRUE)) {
+    stop("Package 'CORElearn' needed for selection method 'relief'.",
+         call. = FALSE)
   }
   
   sfcb_call <- match.call()

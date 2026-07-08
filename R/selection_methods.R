@@ -1,4 +1,4 @@
-#' @importFrom CORElearn attrEval
+#' @importFrom Boruta Boruta
 #' @importFrom utils packageVersion
 
 selection_boruta <- function(summaries, Y, seed) {

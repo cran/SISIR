@@ -12,7 +12,7 @@ test_that("`sfcb` works for one `at` and no selection.", {
                summary.method = "pls", seed = 3)
   expect_named(out1, expected_outputs)
   out1b <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "pls", seed = 3)
+                summary.method = "pls", seed = 3)
   out1$"computational.times" <- NULL
   out1b$"computational.times" <- NULL
   expect_identical(out1, out1b)
@@ -50,50 +50,52 @@ test_that("`sfcb` works for one `at` with selection.", {
   expected_outputs <- c("dendro", "groups", "summaries", "selected", "mse", 
                         "importances", "computational.times", "call")
   
-  out7 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "pls", selection.method = "relief")
-  expect_named(out7, expected_outputs)
-  
-  out8 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "pls", selection.method = "relief")
-  expect_named(out8, expected_outputs)
-  
-  out9 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "basics", selection.method = "relief")
-  expect_named(out9, expected_outputs)
-  
-  if (requireNamespace("Boruta", quietly = TRUE)) {
-    out10 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-                  summary.method = "pls", selection.method = "boruta")
-    expect_named(out10, expected_outputs)
+  if (requireNamespace("CORElearn", quietly = TRUE)) {
+    out7 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "pls", selection.method = "relief")
+    expect_named(out7, expected_outputs)
+    
+    out8 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "pls", selection.method = "relief")
+    expect_named(out8, expected_outputs)
+    
+    out9 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "basics", selection.method = "relief")
+    expect_named(out9, expected_outputs)
   }
+  
+  out10 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                summary.method = "pls", selection.method = "boruta")
+  expect_named(out10, expected_outputs)
 })
 
 test_that("`sfcb` works for one `at` with selection.", {
   expected_outputs <- c("dendro", "groups", "summaries", "selected", "mse", 
                         "importances", "computational.times", "call")
   
-  out11 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-                summary.method = "pls", selection.method = "relief", 
-                range.at = c(5, 7))
-  expect_named(out11, expected_outputs)
-  expect_length(out11$selected, 3)
-  
-  if (requireNamespace("Boruta", quietly = TRUE)) {
-    out12 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-                  summary.method = "pls", selection.method = "boruta", seed = 3)
-    expect_named(out12, expected_outputs)
+  if (requireNamespace("CORElearn", quietly = TRUE)) {
+    out11 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                  summary.method = "pls", selection.method = "relief", 
+                  range.at = c(5, 7))
+    expect_named(out11, expected_outputs)
+    expect_length(out11$selected, 3)
   }
   
-  out13 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-                summary.method = "basics", selection.method = "relief", 
-                range.at = c(5, 7))
-  expect_named(out13, expected_outputs)
+  out12 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                summary.method = "pls", selection.method = "boruta", seed = 3)
+  expect_named(out12, expected_outputs)
   
-  out14 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-                summary.method = "pls", selection.method = "relief", 
-                range.at = c(5, 12))
-  expect_named(out14, expected_outputs)
+  if (requireNamespace("CORElearn", quietly = TRUE)) {
+    out13 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                  summary.method = "basics", selection.method = "relief", 
+                  range.at = c(5, 7))
+    expect_named(out13, expected_outputs)
+    
+    out14 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                  summary.method = "pls", selection.method = "relief", 
+                  range.at = c(5, 12))
+    expect_named(out14, expected_outputs)
+  }
 })
 
 test_that("`sfcb` properly returns error when expected.", {

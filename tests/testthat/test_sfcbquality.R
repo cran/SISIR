@@ -32,30 +32,32 @@ test_that("quality computation works as expected with selection.", {
                         "importances", "computational.times", "call", "truth",
                         "quality")
   
-  out4 <- sfcb(rainfall, truffles, group.method = "adjclust",
-               summary.method = "pls", selection.method = "relief")
-  expect_named(quality(out4, beta), expected_outputs)
-  
-  out5 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "pls", selection.method = "relief", 
-               range.at = c(5, 7))
-  expect_named(quality(out5, beta), expected_outputs)
-  
-  out6 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "basics", selection.method = "relief")
-  expect_named(quality(out6, beta), expected_outputs)
-  
-  out7 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "basics", selection.method = "relief", 
-               range.at = c(5, 7))
-  expect_named(quality(out7, beta), expected_outputs)
-  
-  out8 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "pls", selection.method = "relief", 
-               range.at = c(5, 12))
-  expect_named(quality(out8, beta), expected_outputs)
-  expect_named(quality(out8, beta, threshold = 0.01), 
-               c(expected_outputs, "threshold"))
+  if (requireNamespace("CORElearn", quietly = TRUE)) {
+    out4 <- sfcb(rainfall, truffles, group.method = "adjclust",
+                 summary.method = "pls", selection.method = "relief")
+    expect_named(quality(out4, beta), expected_outputs)
+    
+    out5 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "pls", selection.method = "relief", 
+                 range.at = c(5, 7))
+    expect_named(quality(out5, beta), expected_outputs)
+    
+    out6 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "basics", selection.method = "relief")
+    expect_named(quality(out6, beta), expected_outputs)
+    
+    out7 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "basics", selection.method = "relief", 
+                 range.at = c(5, 7))
+    expect_named(quality(out7, beta), expected_outputs)
+    
+    out8 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "pls", selection.method = "relief", 
+                 range.at = c(5, 12))
+    expect_named(quality(out8, beta), expected_outputs)
+    expect_named(quality(out8, beta, threshold = 0.01), 
+                 c(expected_outputs, "threshold"))
+  }
 })
 
 test_that("quality graphics works as expected.", {
@@ -91,20 +93,22 @@ test_that("quality graphics works as expected.", {
             quality.crit = c("Precision", "Recall"))
   expect_s3_class(p, "ggplot")
   
-  out3 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-               summary.method = "pls", selection.method = "relief", 
-               range.at = c(5, 12))
-  out3b <- extract_at(out3, c(9, 11:12))
-  out3c <- quality(out3b, beta, threshold = 0.01)
-  p <- plot(out3c, plot.type = "quality", quality.crit = "mse")
-  expect_s3_class(p, "ggplot")
-  p <- plot(out3c, plot.type = "quality", quality.crit = "ARI")
-  expect_s3_class(p, "ggplot")
-  p <- plot(out3c, plot.type = "quality", quality.crit = c("mse", "NMI"))
-  expect_s3_class(p, "ggplot")
-  p <- plot(out3c, plot.type = "quality", 
-            quality.crit = c("Precision", "Recall"))
-  expect_s3_class(p, "ggplot")
+  if (requireNamespace("CORElearn", quietly = TRUE)) {
+    out3 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+                 summary.method = "pls", selection.method = "relief", 
+                 range.at = c(5, 12))
+    out3b <- extract_at(out3, c(9, 11:12))
+    out3c <- quality(out3b, beta, threshold = 0.01)
+    p <- plot(out3c, plot.type = "quality", quality.crit = "mse")
+    expect_s3_class(p, "ggplot")
+    p <- plot(out3c, plot.type = "quality", quality.crit = "ARI")
+    expect_s3_class(p, "ggplot")
+    p <- plot(out3c, plot.type = "quality", quality.crit = c("mse", "NMI"))
+    expect_s3_class(p, "ggplot")
+    p <- plot(out3c, plot.type = "quality", 
+              quality.crit = c("Precision", "Recall"))
+    expect_s3_class(p, "ggplot")
+  }
 })
 
 test_that("quality computation returns errors as expected.", {

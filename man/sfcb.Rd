@@ -81,8 +81,10 @@ an object of class \code{"SFCB"} with elements:
 }
 \examples{
 data(truffles)
-out1 <- sfcb(rainfall, truffles, group.method = "adjclust", 
-             summary.method = "pls", selection.method = "relief")
+if (requireNamespace("CORElearn", quietly = TRUE)) {
+  out1 <- sfcb(rainfall, truffles, group.method = "adjclust", 
+               summary.method = "pls", selection.method = "relief")
+}
 out2 <- sfcb(rainfall, truffles, group.method = "adjclust", 
              summary.method = "basics", selection.method = "none",
              range.at = c(5, 7))
